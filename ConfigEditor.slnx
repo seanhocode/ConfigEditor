@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="ConfigEditor.BaselineTests/ConfigEditor.BaselineTests.csproj" />
+  <Project Path="ConfigEditor.Core/ConfigEditor.Core.csproj" />
+  <Project Path="ConfigEditor.Infrastructure.Tests/ConfigEditor.Infrastructure.Tests.csproj" />
+  <Project Path="ConfigEditor.Infrastructure/ConfigEditor.Infrastructure.csproj" />
+  <Project Path="ConfigEditor.Wpf/ConfigEditor.Wpf.csproj" />
+</Solution>

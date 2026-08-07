@@ -1,0 +1,104 @@
+﻿<Window x:Class="ConfigEditor.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model="clr-namespace:ConfigEditor.Wpf.Models"
+    xmlns:views="clr-namespace:ConfigEditor.Wpf.Views"
+        mc:Ignorable="d"
+        Title="Config Editor"
+        Width="1400"
+        Height="900"
+        MinWidth="1100"
+        MinHeight="700">
+    <Border Margin="10"
+            Padding="12"
+            CornerRadius="10"
+            BorderBrush="{StaticResource Brush.Border}"
+            BorderThickness="1">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFFFF" Offset="0" />
+                            <GradientStop Color="#F3F7FC" Offset="1" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <!--ToDo: Dev.WPF專案補上DataTrigger的Binding與Value-->
+                    <DataTrigger Binding="{Binding IsLiteUiMode}" Value="True">
+                        <Setter Property="Background" Value="{StaticResource Brush.Bg1}" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,0,0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0" Text="掃描根目錄" />
+                <!--ToDo: Dev.WPF專案補上Binding的UpdateSourceTrigger-->
+                <TextBox Grid.Column="1" Height="30" Margin="0,0,8,0" VerticalContentAlignment="Center" Text="{Binding RootDirectory, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Grid.Column="2" Width="120" Height="30" Margin="0,0,8,0" Content="選擇目錄" Command="{Binding PickRootDirectoryCommand}" />
+                <CheckBox Grid.Column="3" VerticalAlignment="Center" Margin="0,0,12,0" Content="啟用白名單" IsChecked="{Binding IsWhitelistEnabled}" />
+                <CheckBox Grid.Column="4" VerticalAlignment="Center" Margin="0,0,12,0" Content="精簡 UI 模式" IsChecked="{Binding IsLiteUiMode}" />
+                <Button Grid.Column="5" Width="120" Height="30" Content="開始掃描" Command="{Binding ScanCommand}" />
+            </Grid>
+
+            <Expander Grid.Row="1" Header="白名單設定（可放資料夾或單檔）" IsExpanded="False" Margin="0,0,0,8">
+                <Grid Margin="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <ListBox Grid.Column="0" Height="120" ItemsSource="{Binding WhitelistItems}" SelectedItem="{Binding SelectedWhitelistItem}" />
+
+                    <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                        <Button Width="120" Height="30" Margin="0,0,0,6" Content="新增檔案" Command="{Binding AddWhitelistFileCommand}" />
+                        <Button Width="120" Height="30" Margin="0,0,0,6" Content="新增資料夾" Command="{Binding AddWhitelistFolderCommand}" />
+                        <Button Width="120" Height="30" Content="移除" Command="{Binding RemoveWhitelistItemCommand}" />
+                    </StackPanel>
+                </Grid>
+            </Expander>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="380" />
+                    <ColumnDefinition Width="6" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <views:FileTreePanelView Grid.Column="0" />
+
+                <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#DCE6F2" />
+
+                <TabControl Grid.Column="2">
+                    <TabItem Header="單檔編輯">
+                        <views:SingleFileEditorView />
+                    </TabItem>
+
+                    <TabItem Header="批次編輯">
+                        <views:BatchEditorView />
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
