@@ -15,7 +15,7 @@ public class XmlService : IXmlService
     /// <returns>載入後文件</returns>
     public XDocument LoadXDocument(string filePath)
     {
-        return XDocument.Load(filePath, LoadOptions.PreserveWhitespace);
+        return SeanTool.CSharp.XmlTool.XmlTool.GetXDocument(filePath, LoadOptions.PreserveWhitespace, clearReadOnly: false);
     }
 
     /// <summary>
@@ -25,7 +25,7 @@ public class XmlService : IXmlService
     /// <param name="document">欲儲存文件</param>
     public void SaveXDocument(string filePath, XDocument document)
     {
-        document.Save(filePath);
+        SeanTool.CSharp.XmlTool.XmlTool.SaveXML(document, filePath);
     }
 
 }

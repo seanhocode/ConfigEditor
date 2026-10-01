@@ -1,11 +1,12 @@
 using System.Collections.ObjectModel;
+using SeanTool.CSharp.WPFTool;
 
 namespace ConfigEditor.Wpf.Models;
 
 /// <summary>
 /// 檔案樹狀節點 UI 模型
 /// </summary>
-public class FileTreeNode : WpfModelBase
+public class FileTreeNode : ViewModelBase
 {
     private bool _isChecked;
     private bool _isExpanded;

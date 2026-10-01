@@ -1,9 +1,11 @@
+using SeanTool.CSharp.WPFTool;
+
 namespace ConfigEditor.Wpf.Models;
 
 /// <summary>
 /// 可勾選檔案項目的 UI 模型
 /// </summary>
-public class SelectableFileItem : WpfModelBase
+public class SelectableFileItem : ViewModelBase
 {
     private bool _isSelected;
 

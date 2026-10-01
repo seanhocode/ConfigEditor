@@ -97,6 +97,29 @@ public class AdapterIntegrationTests
         }
     }
 
+    [Fact]
+    public void XmlDocumentPortAdapter_LoadPreservesWhitespaceAndReadOnlyFlag()
+    {
+        var root = CreateTempDirectory();
+        var file = Path.Combine(root, "readonly.xml");
+        File.WriteAllText(file, "<root>\n  <!-- note -->\n  <a>1</a>\n</root>");
+        File.SetAttributes(file, File.GetAttributes(file) | FileAttributes.ReadOnly);
+
+        try
+        {
+            var doc = new XmlService().LoadXDocument(file);
+
+            Assert.Contains(doc.Root!.Nodes().OfType<XText>(), node => node.Value.Contains('\n'));
+            Assert.Single(doc.Root.Nodes().OfType<XComment>());
+            Assert.True((File.GetAttributes(file) & FileAttributes.ReadOnly) != 0);
+        }
+        finally
+        {
+            File.SetAttributes(file, FileAttributes.Normal);
+            DeleteTempDirectory(root);
+        }
+    }
+
     private static string CreateTempDirectory()
     {
         var path = Path.Combine(Path.GetTempPath(), "ConfigEditor.Infrastructure.Tests", Guid.NewGuid().ToString("N"));

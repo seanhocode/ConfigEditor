@@ -8,9 +8,9 @@ namespace ConfigEditor.Core.Services
         /// <summary>
         /// 針對多個檔案分析可共同編輯的目標集合
         /// </summary>
-        /// <param name="batchFileList">待分析檔案路徑</param>
+        /// <param name="filePaths">待分析檔案路徑</param>
         /// <returns>共同可編輯目標清單</returns>
-        IReadOnlyList<BatchTarget> AnalyzeBatchTargets(IEnumerable<string> batchFileList);
+        IReadOnlyList<BatchTarget> AnalyzeBatchTargets(IEnumerable<string> filePaths);
 
         /// <summary>
         /// 將指定目標套用新值到單一檔案

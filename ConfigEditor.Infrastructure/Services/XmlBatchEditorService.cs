@@ -30,9 +30,9 @@ namespace ConfigEditor.Infrastructure.Services
         /// </summary>
         /// <param name="filePaths">待分析檔案路徑</param>
         /// <returns>共同目標契約清單</returns>
-        public IReadOnlyList<BatchTarget> AnalyzeBatchTargets(IEnumerable<string> batchFileList)
+        public IReadOnlyList<BatchTarget> AnalyzeBatchTargets(IEnumerable<string> filePaths)
         {
-            IList<string> normalizedFiles = batchFileList
+            IList<string> normalizedFiles = filePaths
                 .Where(File.Exists)
                 .Distinct(StringComparer.OrdinalIgnoreCase)
                 .ToList();
@@ -42,13 +42,13 @@ namespace ConfigEditor.Infrastructure.Services
                 return [];
             }
 
-            Dictionary<string, int> counter = new Dictionary<string, int>(StringComparer.Ordinal);
-            Dictionary<string, EditableNode> sampleSlots = new Dictionary<string, EditableNode>(StringComparer.Ordinal);
+            var counter = new Dictionary<string, int>(StringComparer.Ordinal);
+            var sampleSlots = new Dictionary<string, EditableNode>(StringComparer.Ordinal);
 
             foreach (var filePath in normalizedFiles)
             {
                 IReadOnlyList<EditableNode> xmlEditableNodeList = GetXmlEditableNodeList(filePath);
-                HashSet<string> seen = new HashSet<string>(StringComparer.Ordinal);
+                var seen = new HashSet<string>(StringComparer.Ordinal);
 
                 foreach (EditableNode xmlNode in xmlEditableNodeList)
                 {
@@ -111,7 +111,7 @@ namespace ConfigEditor.Infrastructure.Services
 
             if (updatedCount > 0)
             {
-                doc.Save(filePath);
+                _xmlService.SaveXDocument(filePath, doc);
             }
 
             return updatedCount;

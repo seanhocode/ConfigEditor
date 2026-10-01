@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConfigEditor.Core\ConfigEditor.Core.csproj" />
+    <PackageReference Include="SeanTool.CSharp.XmlTool" Version="0.0.1" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -71,7 +71,7 @@
                                 <TextBlock Text="{Binding DisplayLabel}" />
                             </HierarchicalDataTemplate>
                             <DataTemplate DataType="{x:Type model:XmlCommentNode}">
-                                <TextBlock Text="{Binding DisplayLabel}" Foreground="#666666" FontStyle="Italic" />
+                                <TextBlock Text="{Binding DisplayLabel}" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontStyle="Italic" />
                             </DataTemplate>
                         </TreeView.Resources>
                     </TreeView>
@@ -85,7 +85,7 @@
                 </Grid>
             </GroupBox>
 
-            <GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#DCE6F2" />
+            <GridSplitter Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource CardStrokeColorDefaultBrush}" />
 
             <ScrollViewer Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Auto"
                            IsEnabled="{Binding IsNotPlainTextMode}">
@@ -115,8 +115,8 @@
                             <Border Grid.Row="0"
                                     Height="220"
                                     Padding="1"
-                                    Background="{StaticResource Brush.Bg1}"
-                                    BorderBrush="#DCE6F2"
+                                    Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                                    BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                                     BorderThickness="1"
                                     CornerRadius="14">
                                 <DataGrid AutoGenerateColumns="False"
@@ -179,8 +179,8 @@
 
             <GroupBox Grid.Row="2" Grid.ColumnSpan="3" Header="搜尋結果（點擊可定位到 XML 樹）" Margin="0,8,0,0">
                 <Border Padding="1"
-                        Background="{StaticResource Brush.Bg1}"
-                        BorderBrush="#DCE6F2"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                         BorderThickness="1"
                         CornerRadius="14">
                     <DataGrid AutoGenerateColumns="False"

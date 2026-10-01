@@ -7,6 +7,8 @@
     xmlns:views="clr-namespace:ConfigEditor.Wpf.Views"
         mc:Ignorable="d"
         Title="Config Editor"
+        Background="{DynamicResource ApplicationBackgroundBrush}"
+        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         Width="1400"
         Height="900"
         MinWidth="1100"
@@ -14,26 +16,9 @@
     <Border Margin="10"
             Padding="12"
             CornerRadius="10"
-            BorderBrush="{StaticResource Brush.Border}"
-            BorderThickness="1">
-        <Border.Style>
-            <Style TargetType="Border">
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Color="#FFFFFF" Offset="0" />
-                            <GradientStop Color="#F3F7FC" Offset="1" />
-                        </LinearGradientBrush>
-                    </Setter.Value>
-                </Setter>
-                <Style.Triggers>
-                    <!--ToDo: Dev.WPF專案補上DataTrigger的Binding與Value-->
-                    <DataTrigger Binding="{Binding IsLiteUiMode}" Value="True">
-                        <Setter Property="Background" Value="{StaticResource Brush.Bg1}" />
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Border.Style>
+            BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+            BorderThickness="1"
+            Style="{StaticResource Style.MainContentBorder}">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -53,7 +38,6 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0" Text="掃描根目錄" />
-                <!--ToDo: Dev.WPF專案補上Binding的UpdateSourceTrigger-->
                 <TextBox Grid.Column="1" Height="30" Margin="0,0,8,0" VerticalContentAlignment="Center" Text="{Binding RootDirectory, UpdateSourceTrigger=PropertyChanged}" />
                 <Button Grid.Column="2" Width="120" Height="30" Margin="0,0,8,0" Content="選擇目錄" Command="{Binding PickRootDirectoryCommand}" />
                 <CheckBox Grid.Column="3" VerticalAlignment="Center" Margin="0,0,12,0" Content="啟用白名單" IsChecked="{Binding IsWhitelistEnabled}" />
@@ -87,7 +71,7 @@
 
                 <views:FileTreePanelView Grid.Column="0" />
 
-                <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#DCE6F2" />
+                <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource CardStrokeColorDefaultBrush}" />
 
                 <TabControl Grid.Column="2">
                     <TabItem Header="單檔編輯">

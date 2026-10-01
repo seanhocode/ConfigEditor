@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:model="clr-namespace:ConfigEditor.Wpf.Models"
              mc:Ignorable="d">
-    <Border BorderThickness="1" Padding="8" Background="{StaticResource Brush.Bg1}">
+    <Border BorderThickness="1" Padding="8" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}">
         <DockPanel>
             <StackPanel DockPanel.Dock="Bottom" Margin="0,8,0,0">
                 <Button Height="30" Content="加入 Tree 勾選項目到批次" Command="{Binding AddCheckedTreeFilesToBatchCommand}" />

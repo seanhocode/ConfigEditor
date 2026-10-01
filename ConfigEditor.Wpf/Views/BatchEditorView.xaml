@@ -73,8 +73,8 @@
                     <Border Grid.Row="2"
                             Margin="0,0,0,8"
                             Padding="1"
-                            Background="{StaticResource Brush.Bg1}"
-                            BorderBrush="#DCE6F2"
+                            Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                            BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
                             BorderThickness="1"
                             CornerRadius="14">
                         <DataGrid AutoGenerateColumns="False"
@@ -109,6 +109,6 @@
         </Grid>
 
         <TextBlock Grid.Row="1" Margin="0,8,0,0" Text="{Binding BatchStatus}" TextWrapping="Wrap" />
-        <TextBlock Grid.Row="2" Margin="0,8,0,0" Text="提示：先在左側樹狀清單勾選檔案，再按「加入 Tree 勾選項目到批次」" TextWrapping="Wrap" Foreground="{StaticResource Brush.TextMuted}" />
+        <TextBlock Grid.Row="2" Margin="0,8,0,0" Text="提示：先在左側樹狀清單勾選檔案，再按「加入 Tree 勾選項目到批次」" TextWrapping="Wrap" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
     </Grid>
 </UserControl>

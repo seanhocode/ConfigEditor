@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel;
+using SeanTool.CSharp.WPFTool;
 
 namespace ConfigEditor.Wpf.Models
 {
     /// <summary>
     /// XML 樹狀節點
     /// </summary>
-    public class XmlNode : WpfModelBase
+    public class XmlNode : ViewModelBase
     {
         private bool _isExpanded;
         private bool _isSelected;

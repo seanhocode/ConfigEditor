@@ -1,6 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <Page Remove="Themes\Buttons.xaml" />
+    <Page Remove="Themes\Colors.xaml" />
+    <Page Remove="Themes\DataGrid.xaml" />
+    <Page Remove="Themes\Inputs.xaml" />
+    <Page Remove="Themes\Navigation.xaml" />
+    <Page Remove="Themes\Scrolling.xaml" />
+    <Page Remove="Themes\Typography.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ConfigEditor.Core\ConfigEditor.Core.csproj" />
     <ProjectReference Include="..\ConfigEditor.Infrastructure\ConfigEditor.Infrastructure.csproj" />
   </ItemGroup>
@@ -21,7 +31,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.11" />
+    <PackageReference Include="SeanTool.CSharp.WPFTool" Version="0.0.7" />
   </ItemGroup>
 
 </Project>

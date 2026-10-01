@@ -1,9 +1,11 @@
+using SeanTool.CSharp.WPFTool;
+
 namespace ConfigEditor.Wpf.Models;
 
 /// <summary>
 /// XML 屬性項目 UI 模型
 /// </summary>
-public class XmlAttributeItem : WpfModelBase
+public class XmlAttributeItem : ViewModelBase
 {
     private string _name = string.Empty;
     private string _value = string.Empty;
