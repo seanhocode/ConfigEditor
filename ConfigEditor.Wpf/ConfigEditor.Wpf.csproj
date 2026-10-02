@@ -1,16 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <Page Remove="Themes\Buttons.xaml" />
-    <Page Remove="Themes\Colors.xaml" />
-    <Page Remove="Themes\DataGrid.xaml" />
-    <Page Remove="Themes\Inputs.xaml" />
-    <Page Remove="Themes\Navigation.xaml" />
-    <Page Remove="Themes\Scrolling.xaml" />
-    <Page Remove="Themes\Typography.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ConfigEditor.Core\ConfigEditor.Core.csproj" />
     <ProjectReference Include="..\ConfigEditor.Infrastructure\ConfigEditor.Infrastructure.csproj" />
   </ItemGroup>
